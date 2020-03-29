@@ -1,0 +1,57 @@
+<body>
+  <div style="padding: 20%; padding-top: 0%; padding-bottom: 0%; border: 1px solid blue;" >
+     <h1 style="text-align: center;">LogIn Form</h1>
+     <form [formGroup]="demoForm" (ngSubmit)="Submit()" [hidden]="Display">
+       <div class="form-group">
+         <label>Name:</label>
+         <input type="text" class="form-control" formControlName="name" placeholder="Enter your name">     
+         
+         <div *ngIf="demoForm.controls['name'].hasError('required')" class="alert alert-danger">
+           Name required to be filled.
+         </div>
+ 
+         <div *ngIf="demoForm.controls['name'].hasError('minlength')" class="alert alert-danger">
+           Minimum 3 characters required.
+         </div>
+           
+         <div *ngIf="demoForm.controls['name'].hasError('maxlength')" class="alert alert-danger">
+           Name should not exceed 10 characters.
+         </div>
+       </div>
+       <div class="form-group">
+         <label>Mobile No:</label>
+         <input type="number" class="form-control" formControlName="mobile" placeholder="Enter Mobile number">
+         <div *ngIf="demoForm.controls['mobile'].hasError('pattern')" class="alert alert-danger">
+           Invalid format.
+         </div>
+         </div>
+ 
+         <div class="form-group" [hidden]="Display1">
+           <label>Password:</label>
+           <input type="password" class="form-control" placeholder="Enter Password">
+       </div>
+ 
+       <div class="form-group" [hidden]="Display2">
+           <label>OTP:</label>
+           <input type="password" class="form-control" placeholder="Enter OTP">
+       </div>
+ 
+       <button class="form-group">LogIn</button>
+     </form>
+   </div>
+   <div style="padding-left: 43%; font-size: 20px;">
+     <h2>SELECT YOUR IDENTITY:</h2>
+ 
+     <input type="radio" (click)="Login()" name="select"> Employee
+     <br>
+     <input type="radio" (click)="Login1()" name="select"> Admin
+     <br>
+     <input type="radio" (click)="Login2()" name="select"> Customer
+   </div><br/><br/>
+   <hr>
+   <div style="padding-left: 43%; font-size: 20px;">
+     <h1>Mouse Move Demo</h1>
+     <input type="text" placeholder="ENTER SOMETHING" class="form-group" [hidden]="hide" (document:mousemove)="DisplayContent()">
+   </div>
+ </body> 
+ 
